@@ -1,0 +1,10 @@
+body {
+  background-color: #f0f8ff;
+  font-family: Arial, sans-serif;
+}
+
+.external {
+  color: darkblue;
+  font-weight: bold;
+  margin-top: 20px;
+}

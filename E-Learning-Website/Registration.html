@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        form{
+            margin-top: 40px;
+            text-align: center;
+        }
+        table {
+        margin: 0 auto;
+        text-align: center;
+        border-spacing: 15px; 
+    }
+    td {
+        padding: 15px;
+    }
+
+    </style>
+</head>
+<body>
+     <header>
+        <img src="https://blog.solguruz.com/wp-content/uploads/2023/11/Dynamic-E-Learning-App-Trends-in-the-Education-App-Development.png" width="100" height="100" alt="image not found error">
+        <br>
+        <a href="home.html">Home</a>&nbsp;
+        <a href="AboutUs.html">AboutUs</a>&nbsp;
+        <a href="ContactUs.html">ContactUs</a>&nbsp;
+        <a href="Registeration.html">Register</a>&nbsp;
+        <a href="login.html">Login</a>&nbsp;
+    </header>
+    <form action="login.html" >
+        <h2>Registeration Page</h2><br>
+    <table >
+        <tr>
+            <td>Email: </td>
+            <td><input type="email" name="Email" id="e1" required placeholder="example@gmail.com"></td>
+        </tr>
+        <tr>
+            <td>Phone No:</td>
+            <td><input type="number" name="PHone no" id="p1" placeholder="enter phone no in digits only " required></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="Name" id="n1" placeholder="Enter your Full Name"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td><input type="radio" name="male" id="m1">Male</td>
+            <td><input type="radio" name="female" id="f1">Female</td>
+        </tr>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" name="username" id="u1" placeholder="example_123" required aria-errormessage="username cant be empty"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" id="p2" required placeholder="Enter password" minlength="8"></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+    </form>
+    <footer>&copy;All Rights Reserved By TCSC</footer>
+</body>
+</html>
