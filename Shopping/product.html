@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopCart | Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background:#f7f8fa}.brand{font-weight:700;letter-spacing:.3px}.product-card{transition:transform .2s;height:100%}.product-card:hover{transform:translateY(-4px)}.product-img{height:190px;object-fit:cover}.hero{background:linear-gradient(120deg,#e8f2ff,#f4f8ff)}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+ <div class="container"><a class="navbar-brand brand text-primary" href="product.html">🛒 ShopCart</a>
+ <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+ <div class="collapse navbar-collapse" id="nav"><ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link active" href="product.html">Products</a></li><li class="nav-item"><a class="nav-link" href="product1.html">Cart <span class="badge bg-primary" id="cartCount">0</span></a></li><li class="nav-item"><a class="nav-link" href="order.html">Orders</a></li></ul>
+ <form class="d-flex" role="search" onsubmit="return searchProducts()"><input id="search" class="form-control me-2" placeholder="Search products"><button class="btn btn-outline-primary">Search</button></form></div></div>
+</nav>
+<section class="hero py-5"><div class="container"><div class="row align-items-center"><div class="col-lg-8"><h1 class="display-5 fw-bold">Welcome to ShopCart</h1><p class="lead mb-0">Find your everyday essentials at simple prices.</p></div><div class="col-lg-4 text-lg-end mt-3 mt-lg-0"><a href="product1.html" class="btn btn-primary btn-lg">View Cart</a></div></div></div></section>
+<main class="container py-5"><div class="d-flex justify-content-between align-items-center mb-4"><h2 class="h3 mb-0">Our Products</h2><span class="text-secondary small">Choose your products</span></div><div class="row g-4" id="products"></div><p id="noResults" class="text-center text-secondary d-none py-5">No products found.</p></main>
+<footer class="bg-white border-top text-center py-4 text-secondary">© 2026 ShopCart. All Rights Reserved.</footer>
+<script>
+const items=[
+{id:1,name:"Wireless Headphones",price:1299,img:"https://images.unsplash.com/photo-150()?auto=format&fit=crop&w=700&q=80",desc:"Comfortable sound for everyday use."},
+{id:2,name:"Smart Watch",price:1999,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80",desc:"A simple watch for your daily routine."},
+{id:3,name:"Backpack",price:899,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80",desc:"Useful space for work and travel."},
+{id:4,name:"Running Shoes",price:1599,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",desc:"Lightweight shoes for daily activity."}
+];
+function getCart(){return JSON.parse(localStorage.getItem('shopcart')||'[]')}
+function saveCart(c){localStorage.setItem('shopcart',JSON.stringify(c));updateCount()}
+function updateCount(){document.getElementById('cartCount').textContent=getCart().reduce((s,x)=>s+x.qty,0)}
+function add(id){let c=getCart(),p=items.find(x=>x.id===id),old=c.find(x=>x.id===id);old?old.qty++:c.push({...p,qty:1});saveCart(c);alert(p.name+' added to cart.')}
+function render(list=items){let root=document.getElementById('products');root.innerHTML='';document.getElementById('noResults').classList.toggle('d-none',list.length>0);list.forEach(p=>root.innerHTML+=`<div class="col-sm-6 col-lg-3"><div class="card product-card shadow-sm border-0"><img src="${p.img}" class="card-img-top product-img" alt="${p.name}"><div class="card-body d-flex flex-column"><h5 class="card-title">${p.name}</h5><p class="card-text text-secondary small">${p.desc}</p><div class="mt-auto d-flex justify-content-between align-items-center"><strong>₹${p.price}</strong><button class="btn btn-primary btn-sm" onclick="add(${p.id})">Add to Cart</button></div></div></div></div>`)}
+function searchProducts(){let q=document.getElementById('search').value.toLowerCase();render(items.filter(p=>p.name.toLowerCase().includes(q)));return false}
+render();updateCount();
+</script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body></html>
